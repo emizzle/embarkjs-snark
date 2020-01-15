@@ -22,10 +22,12 @@ module.exports = (api) => {
       '@babel/plugin-proposal-optional-chaining',
       ['@babel/plugin-transform-runtime', {
         corejs: 2
-      }]
+      }],
+      '@babel/plugin-proposal-export-default-from'
     ],
     presets: [
-      '@babel/preset-env'
+      '@babel/preset-env',
+      '@babel/preset-typescript'
     ]
   };
 
