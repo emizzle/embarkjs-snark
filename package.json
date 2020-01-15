@@ -35,7 +35,7 @@
     "start": "npm run watch",
     "// start:fix": "npm run watch+fix",
     "// test": "node bin/collective test",
-    "typecheck": "tsc",
+    "typecheck": "tsc --declarationDir dist/",
     "watch": "run-p watch:*",
     "// watch+fix": "run-p watch:build watch:lint:fix watch:test watch:typecheck",
     "watch:build": "npm run build:watch",
