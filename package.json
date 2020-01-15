@@ -1,0 +1,91 @@
+{
+  "name": "embarkjs-snark",
+  "version": "0.0.1",
+  "description": "zkSnarks plugin for EmbarkJS",
+  "main": "dist/index.js",
+  "browser": {
+    "./dist/index.js": "./dist/browser/index.js",
+    "xmlhttprequest": "window.XMLHttpRequest"
+  },
+  "browserslist": [
+    "last 1 version",
+    "not dead",
+    "> 0.2%"
+  ],
+  "files": [
+    "src",
+    "dist"
+  ],
+  "scripts": {
+    "lint": "./node_modules/.bin/eslint src/",
+    "babel": "cross-env BABEL_ENV=node babel --out-dir dist src --source-maps",
+    "build": "run-p build:node build:browser",
+    "build:browser": "cross-env BABEL_ENV=browser babel src --extensions \".js,.ts\" --out-dir dist/browser --source-maps",
+    "build:browser:watch": "npm run build:browser -- --verbose --watch",
+    "build:node": "cross-env BABEL_ENV=node babel src --extensions \".js,.ts\" --out-dir dist --source-maps",
+    "build:node:watch": "npm run build:node -- --verbose --watch",
+    "build:watch": "run-p build:node:watch build:browser:watch",
+    "// ci": "npm run qa",
+    "clean": "npm run reset",
+    "// lint": "node bin/collective lint",
+    "// lint:fix": "npm run lint -- --fix",
+    "// qa": "run-s typecheck lint test build",
+    "// reset": "node bin/collective reset && npx rimraf embark-*.tgz package",
+    "reset": "npx rimraf embarkjs-*.tgz package dist/",
+    "start": "npm run watch",
+    "// start:fix": "npm run watch+fix",
+    "// test": "node bin/collective test",
+    "typecheck": "tsc",
+    "watch": "run-p watch:*",
+    "// watch+fix": "run-p watch:build watch:lint:fix watch:test watch:typecheck",
+    "watch:build": "npm run build:watch",
+    "// watch:lint": "npm run lint -- --watch",
+    "// watch:lint:fix": "npm run lint -- --fix --watch",
+    "// watch:test": "npm run test -- --watch",
+    "watch:typecheck": "npm run typecheck -- --preserveWatchOutput --watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/emizzle/embarkjs-snark.git"
+  },
+  "keywords": [
+    "blockchain",
+    "dapps",
+    "ethereum",
+    "zksnarks",
+    "snarks"
+  ],
+  "author": "Eric Mastro <eric.mastro@gmail.com> (https://github.com/emizzle/)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/emizzle/embarkjs-snark/issues"
+  },
+  "homepage": "https://github.com/emizzle/embarkjs-snark#readme",
+  "dependencies": {
+    "@babel/plugin-proposal-optional-chaining": "7.8.3",
+    "@babel/runtime-corejs3": "7.7.4",
+    "core-js": "3.4.3"
+  },
+  "devDependencies": {
+    "@babel/cli": "7.7.4",
+    "@babel/core": "7.7.4",
+    "@babel/plugin-proposal-class-properties": "7.7.4",
+    "@babel/plugin-proposal-decorators": "7.7.4",
+    "@babel/plugin-syntax-dynamic-import": "7.7.4",
+    "@babel/plugin-transform-runtime": "7.7.4",
+    "@babel/preset-env": "7.7.4",
+    "babel-plugin-dynamic-import-node": "2.3.0",
+    "babel-plugin-macros": "2.8.0",
+    "cross-env": "5.2.0",
+    "eslint": "5.7.0",
+    "lodash.clonedeep": "4.5.0",
+    "npm-run-all": "4.1.5",
+    "rimraf": "3.0.0",
+    "typescript": "3.7.2"
+  },
+  "engines": {
+    "node": ">=10.17.0 <12.0.0",
+    "npm": ">=6.11.3",
+    "yarn": ">=1.19.1"
+  }
+}
